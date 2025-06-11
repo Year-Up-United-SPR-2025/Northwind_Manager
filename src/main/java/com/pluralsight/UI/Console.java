@@ -60,7 +60,7 @@ public class Console {
         return result;
     }
 
-    public String promptForString(String prompt) {
+    public String promptForString(String prompt){
         return this.promptForString(prompt, false);
     }
 
@@ -72,18 +72,20 @@ public class Console {
             if (input.isEmpty() && !allowEmpty) {
                 System.out.println("Input cannot be empty.");
             } else {
-                if (input.length() >= 2) {
+                if(input.length() >= 2){
                     return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
-                } else {
+                }
+                else{
                     return input.toUpperCase();
                 }
+
             }
         }
     }
 
-    public int promptForOption(String[] options, String promptMessage) {
+    public int promptForOption(String[] options) {
         while (true) {
-            System.out.println(promptMessage);
+            System.out.println("Please select from one of the following options:");
             for (int i = 0; i < options.length; i++) {
                 System.out.println((i + 1) + ") " + options[i]);
             }
@@ -91,7 +93,7 @@ public class Console {
             try {
                 int choice = promptForInt("Select option (1–" + options.length + "): ");
                 if (choice >= 1 && choice <= options.length) {
-                    return choice - 1; // Return index for easier use
+                    return choice; // Return index for easier use
                 } else {
                     System.out.println("Invalid choice. Please enter a number between 1 and " + options.length + ".");
                 }
