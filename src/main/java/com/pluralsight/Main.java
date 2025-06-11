@@ -1,6 +1,6 @@
 package com.pluralsight;
 
-import com.pluralsight.Data.NorthwindDataManager;
+import com.pluralsight.data.NorthwindDataManager;
 import com.pluralsight.UI.UserInterface;
 import org.apache.commons.dbcp2.BasicDataSource;
 

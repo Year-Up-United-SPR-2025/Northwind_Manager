@@ -1,4 +1,4 @@
-package com.pluralsight.Models;
+package com.pluralsight.models;
 
 public class Category {
     private int id;
