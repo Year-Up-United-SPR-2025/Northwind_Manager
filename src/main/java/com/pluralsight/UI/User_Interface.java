@@ -12,13 +12,13 @@ public class User_Interface {
     private Console console;
     private NorthwindDataManager dataManager;
 
-    public User_Interface(NorthwindDataManager dataManager){
+    public User_Interface(NorthwindDataManager dataManager) {
         this.console = new Console();
         this.dataManager = dataManager;
     }
 
 
-    public  void display(){
+    public void display() {
         System.out.println("Welcome to the Northwind Manager!");
         currentEmployee = loginUser();
         System.out.println("Welcome, " + this.currentEmployee.getFirstName() + "!");
@@ -28,7 +28,7 @@ public class User_Interface {
     }
 
 
-    private Employee loginUser(){
+    private Employee loginUser() {
         String s = console.promptForString("Just hit enter to login as Matt", true);
         Employee e = new Employee(1, "Matt", "Christenson");
         return e;
@@ -98,10 +98,9 @@ public class User_Interface {
 
     private void listCategoriesAll() {
         List<Category> categories = dataManager.getCategories();
-        if(categories.stream().count() <=0 ){
+        if (categories.stream().count() <= 0) {
             System.out.println("No Categories found.");
-        }
-        else{
+        } else {
             categories.stream().forEach(c -> System.out.println(c.getCategoryName()));
         }
 
