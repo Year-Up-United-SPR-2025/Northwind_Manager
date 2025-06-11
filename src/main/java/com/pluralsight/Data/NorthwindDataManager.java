@@ -5,6 +5,7 @@ import com.pluralsight.models.Product;
 import com.pluralsight.models.Supplier;
 import org.apache.commons.dbcp2.BasicDataSource;
 
+import java.net.NoRouteToHostException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -55,7 +56,42 @@ public class NorthwindDataManager {
     }
 
     public List<Product> getProducts(){
-        return  null;
+        ArrayList<Product> result = new ArrayList<Product>();
+
+        String query = """
+                SELECT
+                ProductID,
+                ProductName,
+                SupplierID,
+                CategoryID,
+                UnitPrice
+                FROM products;
+                """;
+
+        try (
+                Connection c = dataSource.getConnection();
+                PreparedStatement s = c.prepareStatement(query);
+                ResultSet queryResults = s.executeQuery();
+        ){
+            while(queryResults.next()){
+                int productId = queryResults.getInt(1);
+                String productName = queryResults.getString(2);
+                int supplierId = queryResults.getInt(3);
+                int categoryId = queryResults.getInt(4);
+                double price = queryResults.getDouble(5);
+
+                Product product = new Product(productId, productName, categoryId,supplierId, price);
+
+                result.add(product);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
+
+        return result;
     }
 
     public List<Product> getProductsByCategory(Category category){
@@ -73,5 +109,10 @@ public class NorthwindDataManager {
     public List<Supplier> getSuppliers(){
         return null;
     }
+
+
+
+
+
 
 }
