@@ -1,5 +1,6 @@
 package com.pluralsight.UI;
 
+
 import java.util.Scanner;
 
 public class Console {
@@ -60,7 +61,25 @@ public class Console {
         return result;
     }
 
-    public String promptForString(String prompt) {
+    public double promptForDouble(String prompt) {
+        boolean hasResult = false;
+        double result = 0;
+        while (!hasResult) {
+            try {
+                System.out.print(prompt);
+                result = scanner.nextDouble();
+                scanner.nextLine();
+                hasResult = true;
+
+            } catch (Exception e) {
+                System.out.println("Invalid entry");
+                scanner.next();
+            }
+        }
+        return result;
+    }
+
+    public String promptForString(String prompt){
         return this.promptForString(prompt, false);
     }
 
@@ -72,9 +91,10 @@ public class Console {
             if (input.isEmpty() && !allowEmpty) {
                 System.out.println("Input cannot be empty.");
             } else {
-                if (input.length() >= 2) {
+                if(input.length() >= 2){
                     return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
-                } else {
+                }
+                else{
                     return input.toUpperCase();
                 }
 
@@ -92,7 +112,7 @@ public class Console {
             try {
                 int choice = promptForInt("Select option (1–" + options.length + "): ");
                 if (choice >= 1 && choice <= options.length) {
-                    return choice;
+                    return choice; // Return index for easier use
                 } else {
                     System.out.println("Invalid choice. Please enter a number between 1 and " + options.length + ".");
                 }
