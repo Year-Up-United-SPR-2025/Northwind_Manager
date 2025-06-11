@@ -1,7 +1,7 @@
 package com.pluralsight;
 
-import com.pluralsight.data.NorthwindDataManager;
-import com.pluralsight.UI.UserInterface;
+import com.pluralsight.Data.NorthwindDataManager;
+import com.pluralsight.UI.User_Interface;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 public class Main {
@@ -14,7 +14,7 @@ public class Main {
 
         BasicDataSource basicDataSource = getBasicDataSourceFromArgs(args);
         NorthwindDataManager dataManager = new NorthwindDataManager(basicDataSource);
-        UserInterface ui = new UserInterface(dataManager);
+        User_Interface ui = new User_Interface(dataManager);
 
         ui.display();
 

@@ -1,18 +1,18 @@
 package com.pluralsight.UI;
 
-import com.pluralsight.data.NorthwindDataManager;
+import com.pluralsight.Data.NorthwindDataManager;
 import com.pluralsight.models.Category;
 import com.pluralsight.models.Employee;
 
 import java.util.List;
 
-public class UserInterface {
+public class User_Interface {
 
     private Employee currentEmployee;
     private Console console;
     private NorthwindDataManager dataManager;
 
-    public UserInterface(NorthwindDataManager dataManager){
+    public User_Interface(NorthwindDataManager dataManager){
         this.console = new Console();
         this.dataManager = dataManager;
     }

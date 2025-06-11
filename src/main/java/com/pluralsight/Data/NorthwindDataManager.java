@@ -1,4 +1,4 @@
-package com.pluralsight.data;
+package com.pluralsight.Data;
 
 import com.pluralsight.models.Category;
 import com.pluralsight.models.Product;
